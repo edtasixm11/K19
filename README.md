@@ -8,7 +8,7 @@ Podeu trobar la documentació del mòdul a [ASIX-M11](https://sites.google.com/s
 ASIX M06-ASO Escola del treball de barcelona
 
 
-**Authenticació**
+### Authenticació
 
 **edtasixm11/k19:kserver** servidor kerberos detach. Crea els usuaris pere
   pau (admin), jordi, anna, marta, marta/admin i julia.
@@ -26,7 +26,7 @@ ASIX M06-ASO Escola del treball de barcelona
   El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
   s'anomena ldap.edt.org. Aquest host es configura amb authconfig .
 
-**Servei SSH Kerberitzat**
+#### Servei SSH Kerberitzat
 
 **edtasixm11/k19:sshd** Servidor SSHD *kerberitzat*. Servidor ssh que permet
   l'accés d'usuaris locals i usuaris locals amb autenticació kerberos. El
