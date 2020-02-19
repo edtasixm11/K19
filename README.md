@@ -32,6 +32,15 @@ ASIX M06-ASO Escola del treball de barcelona
   l'accés d'usuaris locals i usuaris locals amb autenticació kerberos. El
   servidor s'ha de dir sshd.edt.org.
 
+**edtasixm11/k19:sshdpl** (sshd-pam-kerberos-ldap) Servidor SSH  amb PAM amb autenticació AP de  kerberos i IP de ldap.
+  El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
+  s'anomena ldap.edt.org. Aquest host es configura amb authconfig . 
+  S'ha generat partint del host edtasixm11/k19:khostpl i dse li ha afegit la part del servidor sshd.
+  Conté els fitxers per poder activar el mount del home samba, però no s'ha configurat.
+
+**edtasixm11/k19:sshdpls** (sshd-pam-kerberos-ldap-home-samba) Servidor SSH  amb PAM (kerberos+ldap)
+  que munta els homes dels usuaris (dins del home) via samba.
+
 
 #### Execució
 
