@@ -7,25 +7,31 @@ Podeu trobar la documentació del mòdul a [ASIX-M11](https://sites.google.com/s
 
 ASIX M06-ASO Escola del treball de barcelona
 
-**edtasixm11/k18:kserver** servidor kerberos detach. Crea els usuaris pere
+
+**Authenticació**
+
+**edtasixm11/k19:kserver** servidor kerberos detach. Crea els usuaris pere
   pau (admin), jordi, anna, marta, marta/admin i julia.
   Assignar-li el nom de host: *kserver.edt.org*
 
-**edtasixm11/k18:khost** host client de kerberos. Simplement amb eines 
+**edtasixm11/k19:khost** host client de kerberos. Simplement amb eines 
   kinit, klist i kdestroy (no pam). El servidor al que contacta s'ha 
   de dir *kserver.edt.org*.
 
-**edtasixm11/k18:sshd** Servidor SSHD *kerberitzat*. Servidor ssh que permet 
-  l'accés d'usuaris locals i usuaris locals amb autenticació kerberos. El 
-  servidor s'ha de dir sshd.edt.org.
-
-**edtasixm11/k18:khostp** host amb PAM de  kerberos. El servidor al que contacta s'ha
+**edtasixm11/k19:khostp** host amb PAM de  kerberos. El servidor al que contacta s'ha
   de dir *kserver.edt.org*. Aquest host configura el *system-auth* de pam per usar el
   mòdul *pam_krb5.so*.
 
-**edtasixm11/k18:khostpl** (khost-pam-ldap) host amb PAM amb autenticació AP de  kerberos i IP de ldap.
+**edtasixm11/k19:khostpl** (khost-pam-ldap) host amb PAM amb autenticació AP de  kerberos i IP de ldap.
   El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
   s'anomena ldap.edt.org. Aquest host es configura amb authconfig .
+
+**Servei SSH Kerberitzat**
+
+**edtasixm11/k19:sshd** Servidor SSHD *kerberitzat*. Servidor ssh que permet
+  l'accés d'usuaris locals i usuaris locals amb autenticació kerberos. El
+  servidor s'ha de dir sshd.edt.org.
+
 
 #### Execució
 
