@@ -11,13 +11,19 @@ function servicesStart(){
   /usr/sbin/kadmind -nofork
 }
 
-function initdb(){
+function initConf(){
   if [ $DEBUG -eq 1 ]; then
-    echo "initdb"	
+    echo "initConf"	
   fi    
   cp /opt/docker/krb5.conf /etc/krb5.conf
   cp /opt/docker/kdc.conf /var/kerberos/krb5kdc/kdc.conf
   cp /opt/docker/kadm5.acl /var/kerberos/krb5kdc/kadm5.acl
+}
+
+function initdb(){
+  if [ $DEBUG -eq 1 ]; then
+    echo "initdb"     
+  fi 
   kdb5_util create -s -P masterkey	
 }
 
@@ -48,21 +54,22 @@ if [ $DEBUG -eq 1 ]; then
   echo '$1:' $1
 fi  
 
+initConf
 case "$1" in
   initdb)
       initdb;;
   initdbedt)
       initdbedt;;
   mykadmin)
-      initdb
+      initConf
       shift
       myKadmin $*;;
   listprincs)
-      initdb
+      initConf
       listprincs;;
 esac
-
 servicesStart
+
 exit 0
 
 
