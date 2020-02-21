@@ -1,5 +1,12 @@
 #! /bin/bash
-# res, initdb, initdbedt, kadmin, listprincs
+# @edt ASIX M11-SAD Curs 2019-2020
+# Kerberos Server
+#
+# res: engega el servidor
+# initdb: crear la base de dades kerberos buida
+# initdbedt: crear la base de dades kerberos amb dades per defecte
+# kadmin: executar l'ordre passada a kadmin i engegar el servei
+# listprincs: llistar els principals i engegar el servei
 DEBUG=1
 
 function servicesStart(){
