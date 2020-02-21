@@ -25,3 +25,10 @@ Password:  kuser03
 [user03@host ~]$ id
 uid=1005(kuser03) gid=100(users) groups=100(users),1001(kusers)
 ```
+
+
+Execució per contactar amb AWS EC2:
+```
+docker run --rm --name khost.edt.org -h khost.edt.org -it edtasixm11/k19:khostp
+```
+

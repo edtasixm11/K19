@@ -21,3 +21,9 @@ Execució:
 ```
 docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -s edtasixm11/k19:kserver
 ```
+
+Execució en AWS EC2
+```
+docker run --rm --name kserver.edt.org -h kserver.edt.org -p 88:88 -d edtasixm11/k19:kserver
+```
+
