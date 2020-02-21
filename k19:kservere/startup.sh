@@ -53,13 +53,13 @@ case "$1" in
       initdb;;
   initdbedt)
       initdbedt;;
-  kadmin)
+  mykadmin)
+      initdb
       shift
       myKadmin $*;;
   listprincs)
+      initdb
       listprincs;;
-  *)
-      echo "none $*";;
 esac
 
 servicesStart
