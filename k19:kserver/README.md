@@ -24,6 +24,6 @@ docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -s edtasix
 
 Execució en AWS EC2
 ```
-docker run --rm --name kserver.edt.org -h kserver.edt.org -p 88:88 -d edtasixm11/k19:kserver
+docker run --rm --name kserver.edt.org -h kserver.edt.org -p 88:88 -p 749:749 -p 464:464 -d edtasixm11/k19:kserver
 ```
 
