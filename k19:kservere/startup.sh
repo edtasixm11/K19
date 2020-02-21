@@ -12,7 +12,10 @@
 #   secrets per al masterkey
 #   environment per al debug
 # -------------------------------------------------------------------
-DEBUG=1
+if [ -z "$DEBUG" ]; then
+  DEBUG=0
+fi
+echo $DEBUG
 
 function servicesStart(){
   if [ $DEBUG -eq 1 ]; then 
