@@ -1,5 +1,4 @@
 #! /bin/bash
-
 # res, initdb, initdbedt, kadmin, listprincs
 DEBUG=1
 
@@ -29,11 +28,11 @@ function initdbedt(){
   /opt/docker/install.sh && echo "Ok install"
 }
 
-function doKadmin(){
+function myKadmin(){
   if [ $DEBUG -eq 1 ]; then
-    echo "doKadmin"	
+    echo "myKadmin $*"	
   fi    
-  kadmin.local -q "$1"
+  kadmin.local "$*"
 }
 
 function listprincs(){
@@ -45,21 +44,24 @@ function listprincs(){
 
 if [ $DEBUG -eq 1 ]; then
   echo "inicialitzant..."
+  echo '$0:' $0
+  echo '$1:' $1
 fi  
 
-case $1 in
-  "initdb")
-    initdb;;
-  "initdbedt")
-    initdbedt;;
-  "kadmin")
-    doKadmin;;
-  "listprincs")
-    listprincs;;
+case "$1" in
+  initdb)
+      initdb;;
+  initdbedt)
+      initdbedt;;
+  kadmin)
+      shift
+      myKadmin $*;;
+  listprincs)
+      listprincs;;
+  *)
+      echo "none $*";;
 esac
 
-#initdbedt
-#listprincs
 servicesStart
 exit 0
 
