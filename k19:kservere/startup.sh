@@ -7,6 +7,11 @@
 # initdbedt: crear la base de dades kerberos amb dades per defecte
 # kadmin: executar l'ordre passada a kadmin i engegar el servei
 # listprincs: llistar els principals i engegar el servei
+# -------------------------------------------------------------------
+# Pendent:
+#   secrets per al masterkey
+#   environment per al debug
+# -------------------------------------------------------------------
 DEBUG=1
 
 function servicesStart(){

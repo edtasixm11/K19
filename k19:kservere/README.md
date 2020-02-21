@@ -21,9 +21,11 @@ Execució:
 ```
 docker network create mynet
 docker volume create krb5-data
-docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k19:kserver
+docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -v krb5-data:/var/kerberos -d edtasixm11/k19:kservere initdb
 docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -v krb5-data:/var/kerberos -d edtasixm11/k19:kservere initdbedt
-
+docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -v krb5-data:/var/kerberos -d edtasixm11/k19:kservere listprincs
+docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -v krb5-data:/var/kerberos -d edtasixm11/k19:kservere kadmin -q listprincs
+docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -v krb5-data:/var/kerberos -d edtasixm11/k19:kservere 
 ```
 
 Execució en AWS EC2
