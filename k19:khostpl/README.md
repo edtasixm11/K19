@@ -1,5 +1,7 @@
-# Kerberos khost
+# Kerberos khostpl
 ## @edt ASIX M11-SAD Curs 2019-2020
+
+## atenció: refer que només faci authconfig
 
 **edtasixm11/k18:khostpl** host amb PAM amb autenticació AP de  kerberos i IP de ldap.
   El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
@@ -15,15 +17,17 @@ Part Global:
 
 Part Ldap:
  * instal·lar openldap-clients nss-pam-ldapd authconfig
- * copiar la configuració client /etc/openldap/ldap.conf.
- * copiar la configuració client /etc/nslcd.
- * copiar la configuració ns /etc/nsswitch.conf.
- * activar el servei nslcd
- * activar el servei nscd
+ * ?? copiar la configuració client /etc/openldap/ldap.conf.
+ * ?? copiar la configuració client /etc/nslcd.
+ * ?? copiar la configuració ns /etc/nsswitch.conf.
+ * ?? activar el servei nslcd
+ * ?? activar el servei nscd
 
 Part Kerberos
  * instal·lar pam_krb5 authconfig
- * copiar /etc/krb5.conf per la configuració client kerberos
+ * ??copiar /etc/krb5.conf per la configuració client kerberos
+ * **retocar el fitxer de credencials de /etc/krb5.conf.d**
+ * configurar authconfig
 
 Authconfig:
 ```
@@ -31,7 +35,7 @@ authconfig  --enableshadow --enablelocauthorize --enableldap \
             --ldapserver='ldap.edt.org' --ldapbase='dc=edt,dc=org' \
             --enablekrb5 --krb5kdc='kserver.edt.org' \
             --krb5adminserver='kserver.edt.org' --krb5realm='EDT.ORG' \
-            --updateall
+            --enablemkhomedir --updateall
 ```
 
 #### Execució:
