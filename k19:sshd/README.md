@@ -4,7 +4,34 @@
 
 **edtasixm11/k19:sshd** servidor SSH  amb PAM amb autenticació AP de  kerberos i IP de ldap.
   El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
-  s'anomena ldap.edt.org. Aquest host es configura amb authconfig .
+  s'anomena ldap.edt.org. Aquest host es configura amb authconfig.
+  Generat a partir de la imatge edtasixm11/khostpl que és un host amb PAM kerb5+ldap.
+  Se li ha afegit:
+  
+    *  el servei sshd (cal generar les claus de host)
+    *  el keytab contenint el princpial host/sshd.edt.org@EDT.ORG
+    *  la configuració sshd_config per permetre connexions kerberitzades
+    *  la configuració ssh_config per pode fer test des del propi host.
+
+  Atenció al model de la xarxa:
+
+    * aquest servidor sshd.edt.org ha de localitzar per nom de host els serveis 
+      kerberos.edt.org i ldap.edt.org, de manera que han d'estar en una xarxa docker 
+      propia, per exemple *mynet*.
+
+    * quan el client que es vol connectar per ssh al servidor és un altre host docker 
+      el podem posar a la mateixa xarxa *mynet*.
+
+    * quan el client ssh que es vol connectar al servidor és extern (un host extern o un
+      container desplegat a un altre host) cal configurar en aquest client el /etc/hosts.
+      Cal assegurar-se de posar l'adreça IP del hosts que conté els tres serveis i col·locar 
+      com a nom canònic perimerament el sshd.edt.org.  És a dir:
+      a.b.c.d sshd.edt.org kserver.edt.org ldap.edt.org
+
+    * això es degut a que en realitzar la resolució inversa (configurada per sshd)
+      no obtindria el nom del servidor sshd sinó el que hi hagúes primer en la línia del
+      /etc/hosts.
+
   
 Authconfig:
 ```
