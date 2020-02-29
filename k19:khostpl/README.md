@@ -42,23 +42,37 @@ authconfig  --enableshadow --enablelocauthorize --enableldap \
 
 #### Execució:
 ```
-docker run --rm --name ldap.edt.org -h ldap.edt.org --net mynet -d edtasixm06/ldapserver:19group
+docker run --rm --name ldap.edt.org -h ldap.edt.org --net mynet -d edtasixm06/ldapserver:18group
 docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k19:kserver
 docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11/k19:khostpl
 ```
 
 #### Execució AWS
 ```
-docker run --rm --name ldap.edt.org -h ldap.edt.org -p 389:389 -d edtasixm06/ldapserver:19group
-docker run --rm --name kserver.edt.org -h kserver.edt.org  -p 88:88 -p 749:749 -p 464:464 -d edtasixm11/k19:kserver
-docker run --rm --name khost.edt.org -h khost.edt.org  -it edtasixm11/k19:khostpl
+docker run --rm --name ldap.edt.org -h ldap.edt.org -p 389:389 --net mynet -d edtasixm06/ldapserver:19group
+docker run --rm --name kserver.edt.org -h kserver.edt.org  -p 88:88 -p 749:749 -p 464:464  --net mynet -d edtasixm11/k19:kserver
 ```
 
+En un client local docker:
+```
+docker run --rm --name khost.edt.org -h khost.edt.org -it edtasixm11/k19:khostpl
+# Cal editar /etc/hosts i afegir l'adreça Ip de la AMI AWS EC2
+a.b.c.d kserver.edt.org ldap.edt.org
+```
 
+En un host client:
+ * Usar authconfig.
+```
+# authconfig --savebackup unix
+authconfig  --enableshadow --enablelocauthorize --enableldap \
+            --ldapserver='ldap.edt.org' --ldapbase='dc=edt,dc=org' \
+            --enablekrb5 --krb5kdc='kserver.edt.org' \
+            --krb5adminserver='kserver.edt.org' --krb5realm='EDT.ORG' \
+            --enablemkhomedir --updateall
+# authconfig --savebackup krb5ldap
+```
 
-Test:
-
-
+#### Test de verificació:
 
 ```
 $ su - local01
@@ -68,4 +82,6 @@ Password:  kuser03
 
 [user03@host ~]$ id
 uid=1005(user03) gid=100(users) groups=100(users),1001(kusers)
+# pwd
+# getent passwd user03
 ```
