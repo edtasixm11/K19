@@ -1,0 +1,10 @@
+version: "3"
+services:
+  hello:
+    image: edtasixm11/k19:hello
+    ports:
+      - "80"            
+    networks:
+      - mynet
+networks:
+  mynet:
