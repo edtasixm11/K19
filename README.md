@@ -29,10 +29,9 @@ ASIX M06-ASO Escola del treball de barcelona
 ### Servei SSH Kerberitzat
 
 **edtasixm11/k19:sshd** Servidor SSHD *kerberitzat*. Servidor ssh que permet
-  l'accés d'usuaris locals i usuaris locals amb autenticació kerberos. El
-  servidor s'ha de dir sshd.edt.org.
-
-**edtasixm11/k19:sshdpl** (sshd-pam-kerberos-ldap) Servidor SSH  amb PAM amb autenticació AP de  kerberos i IP de ldap.
+  l'accés d'usuaris locals i usuaris de xarxa. El servidor s'ha de dir *sshd.edt.org*.
+  Implementa sshd-pam-kerberos-ldap. Servidor SSH amb PAM amb autenticació 
+  AP de  kerberos i IP de ldap.
   El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
   s'anomena ldap.edt.org. Aquest host es configura amb authconfig . 
   S'ha generat partint del host edtasixm11/k19:khostpl i dse li ha afegit la part del servidor sshd.
@@ -44,20 +43,13 @@ ASIX M06-ASO Escola del treball de barcelona
 
 #### Execució
 
-Execució bàsica:
+Execució Complerta:
 ```
 docker netweork create mynet
 docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k19:kserver
+docker run --rm --name ldap.edt.org    -h ldap.edt.org    --net mynet -d edtasixm06/ldapserver:18group
 docker run --rm --name sshd.edt.org    -h sshd.edt.org    --net mynet -d edtasixm11/k19:sshd
-docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11/k19:khostp
-```
-
-Execució krb5+ldap:
-```
-docker netweork create mynet
-docker run --rm --name ldap.edt.org -h ldap.edt.org --net mynet -d edtasixm06/ldapserver:19group
-docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k19:kserver
-docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11/k19:khostpl
+docker run --rm --name khost.edt.org   -h khost.edt.org   --net mynet -it edtasixm11/k19:khostp
 ```
 
 
