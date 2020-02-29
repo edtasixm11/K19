@@ -41,13 +41,15 @@ authconfig  --enableshadow --enablelocauthorize --enableldap \
 ```
 
 #### Execució:
+
+Execució local:
 ```
 docker run --rm --name ldap.edt.org -h ldap.edt.org --net mynet -d edtasixm06/ldapserver:18group
 docker run --rm --name kserver.edt.org -h kserver.edt.org --net mynet -d edtasixm11/k19:kserver
 docker run --rm --name khost.edt.org -h khost.edt.org --net mynet -it edtasixm11/k19:khostpl
 ```
 
-#### Execució AWS
+Execució AWS
 ```
 docker run --rm --name ldap.edt.org -h ldap.edt.org -p 389:389 --net mynet -d edtasixm06/ldapserver:19group
 docker run --rm --name kserver.edt.org -h kserver.edt.org  -p 88:88 -p 749:749 -p 464:464  --net mynet -d edtasixm11/k19:kserver
