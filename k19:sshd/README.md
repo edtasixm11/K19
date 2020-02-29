@@ -6,8 +6,6 @@
 **edtasixm11/k18:khostpl** host amb PAM amb autenticació AP de  kerberos i IP de ldap.
   El servidor kerberos al que contacta s'ha de dir *kserver.edt.org*. El servidor ldap
   s'anomena ldap.edt.org. Aquest host es configura amb authconfig .
-  S'ha afegit el paquet client SSH i l configuració client que permet connectar
-  amb credencials de kerberos. Així es pot usar per connectar a servidors ssh kerberitzats.
   
 per generar autenticació PAM amb kerberos i ldap cal:
 

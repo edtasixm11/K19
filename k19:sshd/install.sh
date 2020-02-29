@@ -21,6 +21,10 @@ cp /opt/docker/nsswitch.conf /etc/nsswitch.conf
 #cp /opt/docker/pam_mount.conf.xml /etc/security/pam_mount.conf.xml
 #ln -sf /etc/pam.d/system-auth-edt /etc/pam.d/system-auth
 #cp /opt/docker/system-auth /etc/pam.d/system-auth
+/usr/bin/ssh-keygen -A
+cp /opt/docker/sshd_config /etc/ssh/sshd_config
 cp /opt/docker/ssh_config /etc/ssh/ssh_config
+kadmin -p admin -w kadmin -q "ktadd -k /etc/krb5.keytab host/sshd.edt.org"
+
 
 
