@@ -11,7 +11,7 @@ services:
     networks:
       - mynet
   ldap:
-    image: edtasixm06/ldapserver:18group
+          image: edtasixm06/ldapserver19:latest
     container_name: ldap.edt.org
     hostname: ldap.edt.org
     ports: 
