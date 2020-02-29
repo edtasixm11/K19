@@ -113,3 +113,24 @@ Observem la seqüencia:
  * verifiquem que disposa de credencials de kerberos
  * en fer el ssh connecta automàticament al destí perquè ja té les credencials que 
    l'identifiquen
+
+Connexió des d'un altre host
+```
+[root@khost docker]# kinit pere
+Password for pere@EDT.ORG: 
+[root@khost docker]# ssh pere@sshd.edt.org
+Last login: Sat Feb 29 12:10:48 2020 from 172.18.0.4
+[pere@sshd ~]$ id
+uid=5001(pere) gid=100(users) groups=100(users)
+[pere@sshd ~]$ pwd
+/tmp/home/pere
+[pere@sshd ~]$ getent passwd pere
+pere:*:5001:100:Pere Pou:/tmp/home/pere:
+[pere@sshd ~]$ klist
+Ticket cache: FILE:/tmp/krb5cc_5001_p7FHTh4AyM
+Default principal: pere@EDT.ORG
+
+Valid starting     Expires            Service principal
+02/29/20 12:11:22  03/01/20 12:11:12  krbtgt/EDT.ORG@EDT.ORG
+[pere@sshd ~]$ 
+```
