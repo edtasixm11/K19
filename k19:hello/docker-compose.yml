@@ -3,7 +3,9 @@ services:
   hello:
     image: edtasixm11/k19:hello
     deploy:
-      replicas: 3            
+      replicas: 3           
+      placement:
+        constraints: [node.labels.lloc == local]
     ports:
       - "80:80"            
     networks:
