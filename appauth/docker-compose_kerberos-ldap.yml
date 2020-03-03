@@ -18,13 +18,5 @@ services:
       - "389:389"
     networks:
       - mynet
-  portainer:
-    image: portainer/portainer
-    ports:
-      - "9000:9000"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    networks:
-      - mynet
 networks:
   mynet:
